@@ -1,4 +1,5 @@
 ﻿using SantaCRM.Infrastructure.Commands;
+using SantaCRM.Models;
 using SantaCRM.ViewModels.Base;
 using System.Windows;
 using System.Windows.Input;

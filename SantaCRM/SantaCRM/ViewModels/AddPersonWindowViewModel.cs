@@ -4,6 +4,7 @@ using SantaCRM.ViewModels.Base;
 using System;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SantaCRM.ViewModels
@@ -284,7 +285,14 @@ namespace SantaCRM.ViewModels
         private void OnDeleteCommandExecuted(object p)
         {
             MainWindowViewModel.ClosePerson();
-            DbHelper.DeletePerson(Id);
+            try
+            {
+                DbHelper.DeletePerson(Id);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Вы не можете удалить этого покупателя, потому что за ним закреплены обращения!");
+            }
         }
 
         #endregion

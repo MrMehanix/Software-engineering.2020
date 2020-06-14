@@ -253,8 +253,16 @@ namespace SantaCRM.ViewModels
         {
             SelectedId = GetValueFromSelectedRow("ID");
             Application.Current.MainWindow.IsEnabled = false;
-            PersonWindow = new AddPersonWindow(SelectedId);
-            PersonWindow.Show();
+            try
+            {
+                PersonWindow = new AddPersonWindow(SelectedId);
+                PersonWindow.Show();
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Такого покупателя больше нет, обновите таблицу!");
+                Application.Current.MainWindow.IsEnabled = true;
+            }
         }
 
         #endregion
@@ -268,8 +276,16 @@ namespace SantaCRM.ViewModels
         {
             SelectedId = GetValueFromSelectedRow("#");
             Application.Current.MainWindow.IsEnabled = false;
-            LeadWindow = new AddLeadWindow(SelectedId);
-            LeadWindow.Show();
+            try
+            {
+                LeadWindow = new AddLeadWindow(SelectedId);
+                LeadWindow.Show();
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Такого обращения больше нет, обновите таблицу!");
+                Application.Current.MainWindow.IsEnabled = true;
+            }
         }
 
         #endregion
